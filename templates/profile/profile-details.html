@@ -1,0 +1,34 @@
+<!--Details Page-->
+{% extends 'base.html' %}
+{% load static %}
+{% block content_base %}
+<section id="detailsPage">
+    <div class="wrapper">
+
+        <div class="profilePage">
+        {% if profile.photo %}
+            <img src="{{ profile.photo.url }}" alt="profile-photo">
+            {% else %}
+            <p>Not photo</p>
+        {% endif %}
+        </div>
+
+        <div class="profileText">
+            <!-- Profile Info -->
+            <h1>Nombre: {{ profile.username }}</h1>
+{#            <h1>Email: {{ profile.email }}</h1>#}
+            {% if profile.age %}
+                <h1>Age: {{ profile.age }}</h1>
+            {% endif %}
+            <h1>Total Albums: [{{ albums }}]</h1>
+        </div>
+
+
+        <div class="actionBtn">
+            <!-- Button for Deleting the Profile -->
+            <a href="{% url 'delete profile' %}" class="remove">Borar Perfil</a>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

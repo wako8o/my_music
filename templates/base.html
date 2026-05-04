@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>My Music App</title>
+    <!-- Static Load -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=2"/>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}?v=2"/>
+{#    <link rel="stylesheet" href="{% static 'css/catalog.css' %}?v=2"/>#}
+    <link rel="stylesheet" href="{% static 'css/typography.css' %}?v=2"/>
+</head>
+
+<body>
+<div id="box">
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <img src="{% static 'images/vibrant.png' %}" alt="headphones">
+            <a href="{% url 'index' %}">Inicio</a>
+            {% if user.is_authenticated %}
+
+            <ul>
+                <li><a href="{% url 'add album' %}">Crear Album</a></li>
+                <li><a href="{% url 'details profile' %}">Profil</a></li>
+                <li><a href="#">Bienvenido, {{ user.username }}</a></li>
+                <li><a href="{% url 'logout' %}">Salir</a></li>
+            </ul>
+            {% else %}
+            <ul>
+                <li><a href="{% url 'login' %}">Iniciar sesion</a></li>
+                <li><a href="{% url 'register' %}">Registerse</a></li>
+            </ul>
+            {% endif %}
+
+        </nav>
+    </header>
+    <!-- End Navigation Bar -->
+{% block content_base %}
+    <!-- Main Content -->
+{% endblock %}
+    <!-- Footer -->
+    <footer>
+        <div>
+            &copy; 2026 My Music App. All rights reserved.
+
+            <div>
+                <a href="{% url 'index' %}">Номе</a>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+</div>
+</body>
+</html>

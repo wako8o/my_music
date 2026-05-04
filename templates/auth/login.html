@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content_base %}
+<section class="createPage">
+    <form method="post" action="{% url 'login' %}">
+        <fieldset>
+            <legend>Iniciar sesión</legend>
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button class="add-album" type="submit">Iniciar</button>
+        </fieldset>
+    </form>
+</section>
+{% endblock %}
+
